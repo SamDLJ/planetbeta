@@ -460,7 +460,7 @@ addEventListener('mouseup', () => {
 });
 
 
-addEventListener('ontouchstart', (event) => {
+addEventListener('touchstart', (event) => {
 	document.getElementById("touchevents").innerHTML = "touch start";
 	
 	//let world = document.getElementById('world');
@@ -478,7 +478,7 @@ addEventListener('ontouchstart', (event) => {
 
 });
 
-addEventListener('ontouchend', () => {
+addEventListener('touchend', () => {
 	document.getElementById("touchevents").innerHTML = "...";
 	finl_pos.x = mouse.x - init_pos.x;
 	finl_pos.y = mouse.y - init_pos.y;
@@ -487,7 +487,7 @@ addEventListener('ontouchend', () => {
 	holding = false;
 })
 
-addEventListener('ontouchmove', () => {
+addEventListener('touchmove', () => {
 	document.getElementById("touchevents").innerHTML = "touch moving...";
 	
 	last_pos.x = mouse.x;
