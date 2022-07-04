@@ -47,6 +47,7 @@ body {
 	max-height: 3000px;
 	
 	z-index: 2;
+	user-select: none;
 	/*flex-grow: 0;/**/
 	
 	/*box-shadow: inset -25px -25px 400px rgba(30,0,99,.5);/**/
@@ -76,6 +77,7 @@ body {
 	
 	pointer-events: none;
 	border-radius: 50%;
+	user-select: none;
 }
 
 .circle {
@@ -101,7 +103,7 @@ section i {
 	border-radius: 50%;
 	/*box-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 4px #fff, 0 0 8px #fff;*/
 	animation: animate linear infinite;
-	
+	user-select: none;
 }
 
 @keyframes animate{
@@ -154,13 +156,14 @@ section i {
 	box-shadow: inset 0px 0px 400px 0px rgba(199,0,0,1.0);
 	
 	pointer-events: none;
-	
+	user-select: none;
 }
 
 .ocean_sphere {
   fill: #ff0000;
   /*opacity: 0.3;*/
 	pointer-events: none;
+	user-select: none;
 	
 }
 
@@ -168,30 +171,35 @@ section i {
 	fill: #ff0000;
 	opacity: 0.0;
 	pointer-events: none;
+	user-select: none;
 }
 
 .mount_sphere {
   fill: #000000;
   opacity: 0.0;
 	pointer-events: none;
+	user-select: none;
 }
 
 .marker_sphere {
   fill: #000000;
   opacity: 0.0;
 	pointer-events: none;
+	user-select: none;
 }
 
 .cities_sphere {
   fill: #000000;
   opacity: 0.0;
 	pointer-events: none;
+	user-select: none;
 }
 
 .siamka_sphere {
   fill: #000000;
   opacity: 0.0;
 	pointer-events: none;
+	user-select: none;
 }
 
 
@@ -201,20 +209,24 @@ section i {
   stroke: black;
   /*stroke-opacity: 0.1;*/
   stroke-width: 0.05px;
+	user-select: none;
 }
 
 .country_css:hover {
   fill: #44aa00;
+	user-select: none;
 }
 
 .markers_css {
   fill: #888888;
   
   stroke-width: 0.05px;
+	user-select: none;
 }
 
 .markers_css:hover {
   fill: #777777;
+	user-select: none;
 }
 
 
@@ -222,10 +234,12 @@ section i {
   fill: #ffff00;
   
   stroke-width: 0.35px;
+	user-select: none;
 }
 
 .cities_css:hover {
   fill: #00ff00;
+	user-select: none;
 	
 }
 
@@ -240,6 +254,7 @@ section i {
   fill: #000066;
 	stroke-width: 0.5px;
 	stroke: #33bbff;
+	user-select: none;
 }
 
 .main_continent_css {
@@ -249,6 +264,7 @@ section i {
   /*stroke-opacity: 0.1;*/
   stroke-width: 0.05px;
 	width: auto;
+	user-select: none;
 	
 }
 
@@ -256,6 +272,7 @@ section i {
   fill: #448800;
 	stroke-width: 0.2px;
 	stroke: #77bb00;
+	user-select: none;
 }
 
 .siamka_css {
@@ -263,12 +280,14 @@ section i {
   stroke: black;
   /*stroke-opacity: 0.1;*/
   stroke-width: 0.05px;
+	user-select: none;
 }
 
 .siamka_css:hover {
   fill: #448800;
 	stroke-width: 0.5px;
 	stroke: #77ff00;
+	user-select: none;
 }
 
 

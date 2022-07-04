@@ -253,6 +253,7 @@ function render_with_rotation(anglex, angley) {
 function mouseDown() {
 	
 }
+
 const spacing = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
 function mouseClick(d) {
 	try {
@@ -465,14 +466,90 @@ addEventListener('mouseup', () => {
 
 addEventListener('ontouchstart', () => {
 	document.getElementById("touchevents").innerHTML = "touch start";
+	
+	let world = document.getElementById('world');
+	world.onmouseover = world.onmouseout = world.onmousemove = handler;
+	//console.log(world.onmousemove);
+	
+	
+	init_pos.x = mouse.x;
+	init_pos.y = mouse.y;
+	init_pos.t = Date.now();
+	
+	
+	holding = true;
+
 })
 
 addEventListener('ontouchend', () => {
 	document.getElementById("touchevents").innerHTML = "";
+	finl_pos.x = mouse.x - init_pos.x;
+	finl_pos.y = mouse.y - init_pos.y;
+	finl_pos.t = Date.now()-init_pos.t;
+	
+	holding = false;
 })
 
 addEventListener('ontouchmove', () => {
 	document.getElementById("touchevents").innerHTML = "touch moving...";
+	
+	last_pos.x = mouse.x;
+	last_pos.y = mouse.y;
+	mouse.x = (event.clientX / innerWidth)*2 - 1;
+	mouse.y = (event.clientY / innerHeight)*2 - 1;
+
+	//console.log(transf_spin);
+	if (holding) {
+		//v.x = 0;
+		//v.y = 0;
+	
+		let speedx = parseInt( Math.abs(150*(mouse.x - last_pos.x)))+1;
+		let speedy = parseInt( Math.abs(150*(mouse.y - last_pos.y)))+1;
+	
+	
+		if (speedx >= 5*transf_spin){
+			speedx = 5*transf_spin;
+		} else if (speedx >= 2*transf_spin){
+			speedx = 3*transf_spin;
+		}
+	
+		if (speedy >= 5*transf_spin){
+			speedy = 5*transf_spin;
+		} else if (speedy >= 2*transf_spin){
+			speedy = 3*transf_spin;
+		}
+	
+		if (mouse.x > last_pos.x) {
+			pos.x += 1*speedx;//hold_speed.x;
+			v.x = speedx;
+			if (pos.x > 180) {
+				pos.x = -179;
+			}
+		} else if (mouse.x < last_pos.x) {
+			pos.x -= 1*speedx;//hold_speed.x;
+			v.x = -speedx;
+			if (pos.x <= -180) {
+				pos.x = 180;
+			}
+		}
+	
+		if (mouse.y < last_pos.y) {
+			pos.y += 1*speedy;
+			v.y = speedy;
+			if (pos.y > max_nutation) {
+				pos.y = max_nutation;
+			}
+		} else if (mouse.y > last_pos.y) {
+			pos.y -= 1*speedy;
+			v.y = -speedy;
+			if (pos.y <= -max_nutation) {
+				pos.y = -max_nutation;
+			}
+		}
+	
+		render_with_rotation(pos.x, pos.y);
+	
+	}
 })
 //document.getElementById("climate").innerHTML = spacing+dd.climate;
 //ontouchcancel 	The event occurs when the touch is interrupted
