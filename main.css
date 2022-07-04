@@ -13,6 +13,25 @@ body {
 	
 }
 
+#infopanel {
+	position: absolute;
+	opacity: 0.8;
+	background: rgba(30,0,99,0);
+	color: #00ffff;
+	background-color:rgba(30,0,99,0);
+	width: 70%;
+	height: 80%;
+	top: 10%;
+	left: 10%;
+	font-family: Arial, Helvetica, sans-serif;
+	font-style: italic;
+	font-weight: bold;
+	font-size: 12px;
+	pointer-events: none;
+	z-index: 4;
+	user-select: none;
+}
+
 .world_container {   
 	/*display: flex;/**/
 	/*justify-content: center;/**/
@@ -76,7 +95,7 @@ body {
 }
 
 section i {
-	z-index: -1;
+	z-index: 2;
 	position: absolute;/*relative;/**/
 	/*background: #fff;*/
 	border-radius: 50%;

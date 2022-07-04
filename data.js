@@ -17,19 +17,81 @@ export const Atlas = {
         { "type": "Polygon", "arcs": [[5],[6],[7],[8]], "properties": { "name": "Equator" }}, /**/
 				{ "type": "Polygon", "arcs": [[9]], "properties": { "name": "North Pole" }}, /**/
 				{ "type": "Polygon", "arcs": [[10]], "properties": { "name": "South Pole" }}, /**/
+				//{ "type": "Polygon", "arcs": [[3]], "properties": { "name": "prime meridian" }}, /**/
+				//{ "type": "Polygon", "arcs": [[4]], "properties": { "name": "international date line" }}, /**/
       ]
     },
     "Cities": {
       "type": "GeometryCollection",
       "geometries": [ 
         { "type": "Polygon", "arcs": [[0]], "properties": { "name": "(starter seed)" }}, //
-        { "type": "Polygon", "arcs": [[11]], "properties": { "name": "Mukades" }}, /**/
-				{ "type": "Polygon", "arcs": [[12]], "properties": { "name": "Lidem Bel" }}, /**/
-				{ "type": "Polygon", "arcs": [[13]], "properties": { "name": "Bardbengry" }}, /**/
-				{ "type": "Polygon", "arcs": [[14]], "properties": { "name": "Wallard" }}, /**/
-				{ "type": "Polygon", "arcs": [[15]], "properties": { "name": "Bleeding Oars" }}, /**/
+        { "type": "Polygon", "arcs": [[11]], 
+					"properties": { 
+						"name": "Mukades",
+						"info": { 
+							"fullname": "Mukades, City of Festivals",
+							"location": "3.0° S, 170.0° E", 
+							"population": "39,000",
+							"climate": "hot, humid",
+						} 
+				 }
+			 }, /**/
+				{ "type": "Polygon", "arcs": [[12]], 
+					"properties": { 
+						"name": "Lidem Bel", 
+						"info": { 
+							"fullname": "Lidem Bel, Home of the Empress",
+							"location": "16.5° S, 19.1° W",
+							"population": "102,000",
+							"climate": "warm",
+						} 
+					}
+				}, /**/
+				{ "type": "Polygon", "arcs": [[13]], 
+					"properties": { 
+						"name": "Bardbengry",
+						"info": { 
+							"fullname": "Bardbengry, Wine Country",
+							"location": "25° S, 38.3° W",
+							"population": "1,400",
+							"climate": "moderate",
+						} 
+					}
+				}, /**/
+				{ "type": "Polygon", "arcs": [[14]], 
+					"properties": { 
+						"name": "Wallard",
+						"info": { 
+							"fullname": "Wallard, The Traveller's Stop",
+							"location": "26° S, 35.8° W",
+							"population": "18,000",
+							"climate": "moderate",
+						} 
+					}
+				}, /**/
+				{ "type": "Polygon", "arcs": [[15]], 
+					"properties": { 
+						"name": "Bleeding Oars",
+						"info": { 
+							"fullname": "Bleeding Oars, Home of Skullmot",
+							"location": "27.5° S, 26.7° W",
+							"population": "2,000",
+							"climate": "moderate, wet",
+						} 
+					}
+				}, /**/
 				{ "type": "Polygon", "arcs": [[16]], "properties": { "name": "landmark" }}, /**/
-				{ "type": "Polygon", "arcs": [[17]], "properties": { "name": "Northern City" }}, /**/
+				{ "type": "Polygon", "arcs": [[17]], 
+					"properties": { 
+						"name": "North City",
+						"info": { 
+							"fullname": "North City, Where the Ice meets the Sky",
+							"location": "65° N, 25.0° E",
+							"population": "11,000",
+							"climate": "cold, dry",
+						}  
+					}
+				}, /**/
       ]
     },
 		"Main_Continent": { //can be any name
@@ -37,8 +99,17 @@ export const Atlas = {
       // geometries or 'shapes' are sequences of arcs. arcs are  sequences of points
       "geometries": [ 
         { "type": "Polygon", "arcs": [[0]], "properties": { "name": "(starter seed)" }}, //
-        { "type": "Polygon", "arcs": [[1+oi]],/*[[1],[2],[3],[4]]*/ "properties": { "name": "continent" }},
-        
+        { "type": "Polygon", "arcs": [[1+oi]],/*[[1],[2],[3],[4]]*/ 
+					"properties": { 
+						"name": "main continent",
+						"info": { 
+							"fullname": "The 'main' continent",
+							"location": "", 
+							"population": "38,642,000",
+							"climate": "",
+						} 
+					}
+				},
       ]
     },
 		"Siamka": { //can be any name
@@ -46,7 +117,18 @@ export const Atlas = {
       // geometries or 'shapes' are sequences of arcs. arcs are  sequences of points
       "geometries": [ 
         { "type": "Polygon", "arcs": [[0]], "properties": { "name": "(starter seed)" }}, //
-        { "type": "Polygon", "arcs": [[3+oi],[4+oi],[5+oi],[6+oi],[7+oi]],/*[[1],[2],[3],[4]]*/ "properties": { "name": "Siamka", "colours": ["#997766", "#00ffff", "#449922", "#0000ff"] }},
+        { "type": "Polygon", "arcs": [[3+oi],[4+oi],[5+oi],[6+oi],[7+oi]],/*[[1],[2],[3],[4]]*/ 
+					"properties": { 
+						"name": "Siamka", 
+						"info": { 
+							"fullname": "Siamkan Empire",
+							"location": "",
+							"population": "138,000",
+							"climate": "hot, wet",
+						},
+						"colours": ["#997766", "#00ffff", "#449922", "#0000ff"] 
+					}
+				},
         
       ]
     },
@@ -54,7 +136,17 @@ export const Atlas = {
       "type": "GeometryCollection",
       "geometries": [ 
         { "type": "Polygon", "arcs": [[0]], "properties": { "name": "(starter seed)" }}, //
-        { "type": "Polygon", "arcs": [[2+oi]], "properties": { "name": "lake" }}, //
+        { "type": "Polygon", "arcs": [[2+oi]], 
+					"properties": { 
+						"name": "Lake",
+						"info": { 
+							"fullname": "some big ass lake, probably would drown if you swam across",
+							"location": "main continent",
+							"population": "",
+							"climate": "",
+						} 
+					 }
+				 }, //
         
       ]
     },
@@ -69,7 +161,7 @@ export const Atlas = {
 		
 		/* vertical lines on opposite sides */
 		[[0, 10*mult], [0,1000],[2,0],[0,-1000],[-2,0]], //3
-    [[2160, 10*mult], [0,1000],[2,0],[0,-1000],[-2,0]], //4  [[0, 0*mult], [2,4],[4,-2],[-2,-4],[-4,2]],
+    [[2160, 10*mult], [0,1000],[2,0],[0,-1000],[-2,0]], //4  
 		
 		/*  Equator */
 		[[0, 10*mult], [0,0.2],[1050,0],[0,-0.2],[-1050,0]], //5
@@ -80,13 +172,13 @@ export const Atlas = {
 		[[0, 98*mult], [0,2],[100,0],[0,-2],[-100,0]], //9
 		[[0, -79*mult], [0,2],[100,0],[0,-2],[-100,0]], // 10
 		
-		[[2200, 0*mult], [0,2],[2,2],[2,0],[2,-2],[0,-2],[-2,-2],[-2,0],[-2,2]], //Mukades
+		[[2040, 7*mult], [0,2],[2,2],[2,0],[2,-2],[0,-2],[-2,-2],[-2,0],[-2,2]], //Mukades
 		[[-230, -6.5*mult], [0,2],[2,2],[2,0],[2,-2],[0,-2],[-2,-2],[-2,0],[-2,2]], //Lidem Bel
 		[[-460, -15*mult], [0,1],[1,1],[1,0],[1,-1],[0,-1],[-1,-1],[-1,0],[-1,1]], //Bardbengry
 		[[-430, -16*mult], [0,2],[2,2],[2,0],[2,-2],[0,-2],[-2,-2],[-2,0],[-2,2]], //Wallard
 		[[-320, -17.5*mult], [0,1],[1,1],[1,0],[1,-1],[0,-1],[-1,-1],[-1,0],[-1,1]], //Bleeding Oars
 		[[160, 17*mult], [0,1],[1,1],[1,0],[1,-1],[0,-1],[-1,-1],[-1,0],[-1,1]], //landmark
-		[[300, 60*mult], [0,2],[2,2],[2,0],[2,-2],[0,-2],[-2,-2],[-2,0],[-2,2]], //Northern City
+		[[300, 70*mult], [0,2],[2,2],[2,0],[2,-2],[0,-2],[-2,-2],[-2,0],[-2,2]], //Northern City
 		[[640, -40*mult], [0,1],[1,1],[1,0],[1,-1],[0,-1],[-1,-1],[-1,0],[-1,1]], //city 8
 		[[0, 60*mult], [0,2],[2,2],[2,0],[2,-2],[0,-2],[-2,-2],[-2,0],[-2,2]], //city 9
 		[[90, 30*mult], [0,1],[1,1],[1,0],[1,-1],[0,-1],[-1,-1],[-1,0],[-1,1]], //city 10

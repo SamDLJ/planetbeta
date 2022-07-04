@@ -45,6 +45,11 @@ shadowzoom.style.transform = "scale("+Math.pow(transf_scale, ex)+")";
 //svgs0.setAttribute("preserveAspectRatio", "xMidYMid slice");
 //svgs0.setAttribute("textAlign", "center"); //200, -50
 
+//var display_nme = document.getElementById("name").innerHTML;
+//var display_loc = document.getElementById("location").innerHTML;
+//var display_pop = document.getElementById("population").innerHTML;
+//var display_clm = document.getElementById("climate").innerHTML;
+
 //display: block;
 //margin: auto;
 const projection = d3.geoOrthographic();
@@ -152,7 +157,8 @@ function render_with_rotation(anglex, angley) {
     .append('path')
     .attr('class', 'main_continent_css')
     .attr('d', pathGenerator)
-    .on("mouseover", d => { /*console.log("hover land"); */ })
+    .on("mouseover", d => {  })
+		.on("mousedown", d => { mouseClick(d); })
     .append('title').text( d => d.properties.name )
 		
     
@@ -173,7 +179,8 @@ function render_with_rotation(anglex, angley) {
     .append('path')
     .attr('class', 'markers_css')
     .attr('d', pathGenerator)
-    .on("mouseover", d => { /* console.log("hover forest"); */ })
+    .on("mouseover", d => {  })
+		.on("mousedown", d => {  })
 		.append('title').text( d => d.properties.name );
 		
 	
@@ -196,6 +203,7 @@ function render_with_rotation(anglex, angley) {
 	  .attr('class', 'lakes_css')
 	  .attr('d', pathGenerator)
 	  .on("mouseover", d => {  })
+		.on("mousedown", d => { mouseClick(d); })
 		.append('title').text( d => d.properties.name );
   
 	/* Siamka */
@@ -215,6 +223,7 @@ function render_with_rotation(anglex, angley) {
 	  .attr('class', 'siamka_css')
 	  .attr('d', pathGenerator)
 	  .on("mouseover", d => {  })
+		.on("mousedown", d => { mouseClick(d); })
 		.append('title').text( d => d.properties.name );
 
 	 /**/
@@ -235,13 +244,35 @@ function render_with_rotation(anglex, angley) {
 	  .append('path')
 	  .attr('class', 'cities_css')
 	  .attr('d', pathGenerator)
-	  .on("mouseover", d => { /* console.log("hover forest"); */ })
+	  .on("mouseover", d => { mouseClick(d); })
+		.on("mousedown", d => { mouseClick(d); })
 		.append('title').text( d => d.properties.name );
   
 }
 
-function mouseDown() {}
-function mouseClick() {}
+function mouseDown() {
+	
+}
+const spacing = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+function mouseClick(d) {
+	try {
+		let dd = d.srcElement.__data__.properties.info;
+		
+		document.getElementById("name").innerHTML = spacing+dd.fullname;
+		document.getElementById("location").innerHTML = spacing+dd.location;
+		document.getElementById("population").innerHTML = spacing+dd.population;
+		document.getElementById("climate").innerHTML = spacing+dd.climate;
+		
+		
+	} catch (e) {
+		
+		return;
+	}
+	
+	
+	
+	
+}
 function mouseHold() {}
 function mouseUp() {}
 
