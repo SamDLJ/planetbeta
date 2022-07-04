@@ -137,10 +137,6 @@ function render_with_rotation(anglex, angley) {
 	let waters = topojson.feature(Atlas, Atlas.objects.Lakes_Layer);
 	let siamka = topojson.feature(Atlas, Atlas.objects.Siamka);
 	let cities = topojson.feature(Atlas, Atlas.objects.Cities);
-  
-  
-  
-  
 
   g.append('path')
     .attr('class', 'sphere')
@@ -364,8 +360,8 @@ addEventListener('mousemove', () => {
 		//v.x = 0;
 		//v.y = 0;
 		
-		let speedx = parseInt( Math.abs(150*(mouse.x - last_pos.x)))+1;
-		let speedy = parseInt( Math.abs(150*(mouse.y - last_pos.y)))+1;
+		let speedx = Math.abs(150*(mouse.x - last_pos.x))+1;
+		let speedy = Math.abs(150*(mouse.y - last_pos.y))+1;
 		
 		
 		if (speedx >= 5*transf_spin){
@@ -461,16 +457,17 @@ addEventListener('mouseup', () => {
 	
 	holding = false;
 	
-})
+});
 
 
-addEventListener('ontouchstart', () => {
+addEventListener('ontouchstart', (event) => {
 	document.getElementById("touchevents").innerHTML = "touch start";
 	
-	let world = document.getElementById('world');
-	world.onmouseover = world.onmouseout = world.onmousemove = handler;
+	//let world = document.getElementById('world');
+	//world.onmouseover = world.onmouseout = world.onmousemove = handler;
 	//console.log(world.onmousemove);
-	
+	mouse.x = (event.touches[0].clientX / innerWidth)*2 - 1;
+	mouse.y = (event.touches[0].clientY / innerHeight)*2 - 1;
 	
 	init_pos.x = mouse.x;
 	init_pos.y = mouse.y;
@@ -479,10 +476,10 @@ addEventListener('ontouchstart', () => {
 	
 	holding = true;
 
-})
+});
 
 addEventListener('ontouchend', () => {
-	document.getElementById("touchevents").innerHTML = "";
+	document.getElementById("touchevents").innerHTML = "...";
 	finl_pos.x = mouse.x - init_pos.x;
 	finl_pos.y = mouse.y - init_pos.y;
 	finl_pos.t = Date.now()-init_pos.t;
@@ -495,8 +492,8 @@ addEventListener('ontouchmove', () => {
 	
 	last_pos.x = mouse.x;
 	last_pos.y = mouse.y;
-	mouse.x = (event.clientX / innerWidth)*2 - 1;
-	mouse.y = (event.clientY / innerHeight)*2 - 1;
+	mouse.x = (event.touches[0].clientX / innerWidth)*2 - 1;
+	mouse.y = (event.touches[0].clientY / innerHeight)*2 - 1;
 
 	//console.log(transf_spin);
 	if (holding) {
@@ -550,7 +547,8 @@ addEventListener('ontouchmove', () => {
 		render_with_rotation(pos.x, pos.y);
 	
 	}
-})
+});
+
 //document.getElementById("climate").innerHTML = spacing+dd.climate;
 //ontouchcancel 	The event occurs when the touch is interrupted
 //ontouchend 			The event occurs when a finger is removed from a touch screen
