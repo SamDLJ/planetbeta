@@ -461,6 +461,9 @@ addEventListener('mouseup', () => {
 
 
 addEventListener('touchstart', (event) => {
+	if (evt.touches.length > 1) {
+		return;
+	}
 	document.getElementById("touchevents").innerHTML = "touch start";
 	
 	//let world = document.getElementById('world');
@@ -620,7 +623,8 @@ var eventCountStart;
 
 var mouseHandle = function (evt) {
   var isTouchPadDefined = isTouchPad || typeof isTouchPad !== "undefined";
-	console.log(evt.type);
+	//console.log(evt.type);
+	
   //console.log(grow+"    "+(-(halfsize+grow))+"");
   if (!isTouchPadDefined) {
       if (eventCount === 0) {
@@ -639,7 +643,7 @@ var mouseHandle = function (evt) {
       }
   }
 
-  if (evt.type == "DOMMouseScroll") {
+  if (evt.type == "DOMMouseScroll" || evt.touches.length > 1) {
       // here you can do what you want
       // i just wanted the direction, for swiping, so i have to prevent
       // the multiple event calls to trigger multiple unwanted actions (trackpad)
@@ -672,6 +676,7 @@ var mouseHandle = function (evt) {
 }
 document.addEventListener("mousewheel", mouseHandle, false);
 document.addEventListener("DOMMouseScroll", mouseHandle, false);
+document.addEventListener("touchstart", mouseHandle, false);
 
 
 
