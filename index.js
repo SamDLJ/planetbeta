@@ -158,7 +158,7 @@ function render_with_rotation(anglex, angley) {
     .attr('class', 'main_continent_css')
     .attr('d', pathGenerator)
     .on("mouseover", d => {  })
-		.on("mousedown", d => { mouseClick(d); })
+		.on("mousedown", d => {  })
     .append('title').text( d => d.properties.name )
 		
     
@@ -463,7 +463,22 @@ addEventListener('mouseup', () => {
 })
 
 
+addEventListener('ontouchstart', () => {
+	document.getElementById("touchevents").innerHTML = "touch start";
+})
 
+addEventListener('ontouchend', () => {
+	document.getElementById("touchevents").innerHTML = "";
+})
+
+addEventListener('ontouchmove', () => {
+	document.getElementById("touchevents").innerHTML = "touch moving...";
+})
+//document.getElementById("climate").innerHTML = spacing+dd.climate;
+//ontouchcancel 	The event occurs when the touch is interrupted
+//ontouchend 			The event occurs when a finger is removed from a touch screen
+//ontouchmove 		The event occurs when a finger is dragged across the screen
+//ontouchstart 		The event occurs when a finger is placed on a touch screen
 
 function animate() {
 	
@@ -529,88 +544,65 @@ var eventCount = 0;
 var eventCountStart;
 
 var mouseHandle = function (evt) {
-    var isTouchPadDefined = isTouchPad || typeof isTouchPad !== "undefined";
-    //console.log(grow+"    "+(-(halfsize+grow))+"");
-    if (!isTouchPadDefined) {
-			console.log("no touchpad")
-        if (eventCount === 0) {
-            eventCountStart = new Date().getTime();
-        }
+  var isTouchPadDefined = isTouchPad || typeof isTouchPad !== "undefined";
+	console.log(evt.type);
+  //console.log(grow+"    "+(-(halfsize+grow))+"");
+  if (!isTouchPadDefined) {
+      if (eventCount === 0) {
+          eventCountStart = new Date().getTime();
+      }
 
-        eventCount++;
+      eventCount++;
 
-        if (new Date().getTime() - eventCountStart > 50) {
-                if (eventCount > 5) {
-                    isTouchPad = true;
-                } else {
-                    isTouchPad = false;
-                }
-            isTouchPadDefined = true;
-        }
-    }
+      if (new Date().getTime() - eventCountStart > 50) {
+              if (eventCount > 5) {
+                  isTouchPad = true;
+              } else {
+                  isTouchPad = false;
+              }
+          isTouchPadDefined = true;
+      }
+  }
 
-    if (isTouchPadDefined) {
-        // here you can do what you want
-        // i just wanted the direction, for swiping, so i have to prevent
-        // the multiple event calls to trigger multiple unwanted actions (trackpad)
-        if (!evt) evt = event;
-        var direction = (evt.detail<0 || evt.wheelDelta>0) ? 1 : -1;
-				//console.log(transf_scale)
-        if (isTouchPad) {
-            newTime = new Date().getTime();
-
-            if (!scrolling && newTime-oldTime > 550 ) {
-                scrolling = true;
-                if (direction < 0) {
-									grow += 10;
-									transf_scale += 0.1;
-									if (transf_scale >= 8.0){
-										transf_scale = 8.0;
-									}
-									worldzoom.style.transform = "scale("+transf_scale+")";
-									shadowzoom.style.transform = "scale("+Math.pow(transf_scale,ex)+")";
-									transf_spin = Math.pow(transf_scale, ex_spin);
-									
-                } else {
-									grow -= 10;
-									transf_scale -= 0.1;
-									if (transf_scale <= 0.7){
-										transf_scale = 0.7;
-									}
-									worldzoom.style.transform = "scale("+transf_scale+")";
-									shadowzoom.style.transform = "scale("+Math.pow(transf_scale,ex)+")";
-									transf_spin = Math.pow(transf_scale, ex_spin);
-									
-                }
-                setTimeout(function() {oldTime = new Date().getTime();scrolling = false}, 500);
-            }
-        } else {
-            if (direction < 0) {
-							grow += 10;
-							transf_scale += 0.1;
-							if (transf_scale >= 8.0){
-								transf_scale = 8.0;
-							}
-							worldzoom.style.transform = "scale("+transf_scale+")";
-							shadowzoom.style.transform = "scale("+Math.pow(transf_scale,ex)+")";
-							transf_spin = Math.pow(transf_scale, ex_spin);
-							
-            } else {
-							grow -= 10;
-							transf_scale -= 0.1;
-							if (transf_scale <= 0.7){
-								transf_scale = 0.7;
-							}
-							worldzoom.style.transform = "scale("+transf_scale+")";
-							shadowzoom.style.transform = "scale("+Math.pow(transf_scale,ex)+")";
-							transf_spin = Math.pow(transf_scale, ex_spin);
-							
-            }
-        }
-    }
+  if (evt.type == "DOMMouseScroll") {
+      // here you can do what you want
+      // i just wanted the direction, for swiping, so i have to prevent
+      // the multiple event calls to trigger multiple unwanted actions (trackpad)
+      if (!evt) evt = event;
+      var direction = (evt.detail<0 || evt.wheelDelta>0) ? 1 : -1;
+      if (direction < 0) {
+				
+				//grow += 10;
+				transf_scale += 0.1;
+				if (transf_scale >= 8.0){
+					transf_scale = 8.0;
+				}
+				worldzoom.style.transform = "scale("+transf_scale+")";
+				shadowzoom.style.transform = "scale("+Math.pow(transf_scale,ex)+")";
+				transf_spin = Math.pow(transf_scale, ex_spin);
+				
+      } else {
+				//grow -= 10;
+				transf_scale -= 0.1;
+				if (transf_scale <= 0.7){
+					transf_scale = 0.7;
+				}
+				worldzoom.style.transform = "scale("+transf_scale+")";
+				shadowzoom.style.transform = "scale("+Math.pow(transf_scale,ex)+")";
+				transf_spin = Math.pow(transf_scale, ex_spin);
+				
+      }
+  }
+    
 }
 document.addEventListener("mousewheel", mouseHandle, false);
 document.addEventListener("DOMMouseScroll", mouseHandle, false);
+
+
+
+
+
+
 
 
 
