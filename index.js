@@ -461,23 +461,24 @@ addEventListener('mouseup', () => {
 
 
 addEventListener('touchstart', (event) => {
-	if (evt.touches.length > 1) {
-		return;
+	if (event.touches.length > 1) {
+		document.getElementById("touchevents").innerHTML = "double touch...";
+	} else {
+		document.getElementById("touchevents").innerHTML = "touch start";
+	
+		//let world = document.getElementById('world');
+		//world.onmouseover = world.onmouseout = world.onmousemove = handler;
+		//console.log(world.onmousemove);
+		mouse.x = (event.touches[0].clientX / innerWidth)*2 - 1;
+		mouse.y = (event.touches[0].clientY / innerHeight)*2 - 1;
+	
+		init_pos.x = mouse.x;
+		init_pos.y = mouse.y;
+		init_pos.t = Date.now();
+	
+	
+		holding = true;
 	}
-	document.getElementById("touchevents").innerHTML = "touch start";
-	
-	//let world = document.getElementById('world');
-	//world.onmouseover = world.onmouseout = world.onmousemove = handler;
-	//console.log(world.onmousemove);
-	mouse.x = (event.touches[0].clientX / innerWidth)*2 - 1;
-	mouse.y = (event.touches[0].clientY / innerHeight)*2 - 1;
-	
-	init_pos.x = mouse.x;
-	init_pos.y = mouse.y;
-	init_pos.t = Date.now();
-	
-	
-	holding = true;
 
 });
 
