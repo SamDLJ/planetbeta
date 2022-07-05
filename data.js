@@ -5,6 +5,7 @@ var mult = 1/scale;
 
 const oi = 23; // offset index
 
+const smalldot = [[0,1],[1,1],[1,0],[1,-1],[0,-1],[-1,-1],[-1,0],[-1,1]];
 
 export const Atlas = {
   "type": "Topology",
@@ -14,6 +15,7 @@ export const Atlas = {
       "type": "GeometryCollection",
       "geometries": [ 
         { "type": "Polygon", "arcs": [[0]], "properties": { "name": "(starter seed)" }}, //
+				//{ "type": "Polygon", "arcs": [[1]], "properties": { "name": "ice cap" }}, //
         { "type": "Polygon", "arcs": [[5],[6],[7],[8]], "properties": { "name": "Equator" }}, /**/
 				{ "type": "Polygon", "arcs": [[9]], "properties": { "name": "North Pole" }}, /**/
 				{ "type": "Polygon", "arcs": [[10]], "properties": { "name": "South Pole" }}, /**/
@@ -33,6 +35,7 @@ export const Atlas = {
 							"location": "3.0° S, 170.0° E", 
 							"population": "39,000",
 							"climate": "hot, humid",
+							"image": "Mukades.png"
 						} 
 				 }
 			 }, /**/
@@ -44,6 +47,7 @@ export const Atlas = {
 							"location": "16.5° S, 19.1° W",
 							"population": "102,000",
 							"climate": "warm",
+							"image": "LidemBel.png"
 						} 
 					}
 				}, /**/
@@ -55,6 +59,7 @@ export const Atlas = {
 							"location": "25° S, 38.3° W",
 							"population": "1,400",
 							"climate": "moderate",
+							"image": "Bardbengry.png"
 						} 
 					}
 				}, /**/
@@ -66,6 +71,7 @@ export const Atlas = {
 							"location": "26° S, 35.8° W",
 							"population": "18,000",
 							"climate": "moderate",
+							"image": "Wallard.png"
 						} 
 					}
 				}, /**/
@@ -77,18 +83,55 @@ export const Atlas = {
 							"location": "27.5° S, 26.7° W",
 							"population": "2,000",
 							"climate": "moderate, wet",
+							"image": "skullmot.png"
 						} 
 					}
 				}, /**/
-				{ "type": "Polygon", "arcs": [[16]], "properties": { "name": "landmark" }}, /**/
+				{ "type": "Polygon", "arcs": [[16]], 
+					"properties": { 
+						"name": "Kolrei Desert",
+						"info": { 
+							"fullname": "Kolrei Desert",
+							"location": "3° N, 2.5° W",
+							"population": "0",
+							"climate": "Hot, dry",
+							"image": "Kolrei.png"
+						} 
+					}
+				}, /**/
 				{ "type": "Polygon", "arcs": [[17]], 
 					"properties": { 
 						"name": "North City",
 						"info": { 
 							"fullname": "North City, Where the Ice meets the Sky",
 							"location": "65° N, 25.0° E",
-							"population": "11,000",
+							"population": "500",
 							"climate": "cold, dry",
+							"image": "dallemini_tundra.png"
+						}  
+					}
+				}, /**/
+				{ "type": "Polygon", "arcs": [[18]], 
+					"properties": { 
+						"name": "Frostrift",
+						"info": { 
+							"fullname": "Frostrift, where floaty rocks make ur stomac turn worse than mcdonalds",
+							"location": "15° N, 61.6° W",
+							"population": "170",
+							"climate": "cold, dry",
+							"image": "Frostrift.png"
+						}  
+					}
+				}, /**/
+				{ "type": "Polygon", "arcs": [[19]], 
+					"properties": { 
+						"name": "forest",
+						"info": { 
+							"fullname": "Researchers exploring with Milren",
+							"location": "10.0° S, 40.0° W",
+							"population": "",
+							"climate": "",
+							"image": "forest.png"
 						}  
 					}
 				}, /**/
@@ -156,7 +199,7 @@ export const Atlas = {
     [[0, 45], [0,1],[1,0],[0,-1],[-1,0]], //0
 		
 		
-		[[0, 55*mult], [2,4],[4,-2],[-2,-4],[-4,2]], //1
+		[[-1000, 90.8*mult], [0,110],[2000,0],[0,-110],[-500,-60],[-1000,0],[-500,60],[-2000,0]], //1 ice test
 		[[0, -35*mult], [2,4],[4,-2],[-2,-4],[-4,2]], //2
 		
 		/* vertical lines on opposite sides */
@@ -177,10 +220,10 @@ export const Atlas = {
 		[[-460, -15*mult], [0,1],[1,1],[1,0],[1,-1],[0,-1],[-1,-1],[-1,0],[-1,1]], //Bardbengry
 		[[-430, -16*mult], [0,2],[2,2],[2,0],[2,-2],[0,-2],[-2,-2],[-2,0],[-2,2]], //Wallard
 		[[-320, -17.5*mult], [0,1],[1,1],[1,0],[1,-1],[0,-1],[-1,-1],[-1,0],[-1,1]], //Bleeding Oars
-		[[160, 17*mult], [0,1],[1,1],[1,0],[1,-1],[0,-1],[-1,-1],[-1,0],[-1,1]], //landmark
+		[[-30, 12*mult], [0,1],[1,1],[1,0],[1,-1],[0,-1],[-1,-1],[-1,0],[-1,1]], //Kolrei Desert
 		[[300, 70*mult], [0,2],[2,2],[2,0],[2,-2],[0,-2],[-2,-2],[-2,0],[-2,2]], //Northern City
-		[[640, -40*mult], [0,1],[1,1],[1,0],[1,-1],[0,-1],[-1,-1],[-1,0],[-1,1]], //city 8
-		[[0, 60*mult], [0,2],[2,2],[2,0],[2,-2],[0,-2],[-2,-2],[-2,0],[-2,2]], //city 9
+		[[-740, 25*mult], [0,1],[1,1],[1,0],[1,-1],[0,-1],[-1,-1],[-1,0],[-1,1]], //Frostrift
+		[[-480, -20*mult], [0,1],[1,1],[1,0],[1,-1],[0,-1],[-1,-1],[-1,0],[-1,1]], //forest researchers
 		[[90, 30*mult], [0,1],[1,1],[1,0],[1,-1],[0,-1],[-1,-1],[-1,0],[-1,1]], //city 10
 		[[100, 30*mult], [0,1],[1,1],[1,0],[1,-1],[0,-1],[-1,-1],[-1,0],[-1,1]], //city 11
 		[[110, 30*mult], [0,1],[1,1],[1,0],[1,-1],[0,-1],[-1,-1],[-1,0],[-1,1]], //city 12

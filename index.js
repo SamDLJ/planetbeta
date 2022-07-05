@@ -1,5 +1,13 @@
 import { Atlas } from './data.js';
 
+/*
+function importAll(r) {
+  let items = [];
+  r.keys().map((item, index) => { items[item.replace('./', '')] = r(item); });
+  return items;
+}
+const images = importAll(require.context('./images', false, /\.(png|jpe?g|svg)$/));
+*/
 
 //var atlas = clone(new_atlas);
 
@@ -251,6 +259,8 @@ function mouseDown() {
 }
 
 const spacing = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+
+
 function mouseClick(d) {
 	try {
 		let dd = d.srcElement.__data__.properties.info;
@@ -259,6 +269,19 @@ function mouseClick(d) {
 		document.getElementById("location").innerHTML = spacing+dd.location;
 		document.getElementById("population").innerHTML = spacing+dd.population;
 		document.getElementById("climate").innerHTML = spacing+dd.climate;
+		
+		
+		let imgc = document.getElementById("image_container");
+		let img = document.createElement('img')
+		img.id = "image_info";
+		img.src = "./images/"+dd.image;
+		
+		if (imgc.hasChildNodes()) {
+		  imgc.replaceChild(img, imgc.childNodes[0]);
+		} else {
+			imgc.appendChild(img);
+		}
+		
 		
 		
 	} catch (e) {
@@ -461,24 +484,25 @@ addEventListener('mouseup', () => {
 
 
 addEventListener('touchstart', (event) => {
+	document.getElementById("touchevents").innerHTML = "touch start";
 	if (event.touches.length > 1) {
 		document.getElementById("touchevents").innerHTML = "double touch...";
-	} else {
-		document.getElementById("touchevents").innerHTML = "touch start";
+	} 
+		
 	
-		//let world = document.getElementById('world');
-		//world.onmouseover = world.onmouseout = world.onmousemove = handler;
-		//console.log(world.onmousemove);
-		mouse.x = (event.touches[0].clientX / innerWidth)*2 - 1;
-		mouse.y = (event.touches[0].clientY / innerHeight)*2 - 1;
+	//let world = document.getElementById('world');
+	//world.onmouseover = world.onmouseout = world.onmousemove = handler;
+	//console.log(world.onmousemove);
+	mouse.x = (event.touches[0].clientX / innerWidth)*2 - 1;
+	mouse.y = (event.touches[0].clientY / innerHeight)*2 - 1;
+
+	init_pos.x = mouse.x;
+	init_pos.y = mouse.y;
+	init_pos.t = Date.now();
+
+
+	holding = true;
 	
-		init_pos.x = mouse.x;
-		init_pos.y = mouse.y;
-		init_pos.t = Date.now();
-	
-	
-		holding = true;
-	}
 
 });
 
@@ -643,8 +667,9 @@ var mouseHandle = function (evt) {
           isTouchPadDefined = true;
       }
   }
-
-  if (evt.type == "DOMMouseScroll" || evt.touches.length > 1) {
+	
+	//if (evt.type == "DOMMouseScroll" || evt.touches.length > 1) {
+  if (evt.type == "DOMMouseScroll") {
       // here you can do what you want
       // i just wanted the direction, for swiping, so i have to prevent
       // the multiple event calls to trigger multiple unwanted actions (trackpad)
