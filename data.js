@@ -9,7 +9,7 @@ const smalldot = [[0,1],[1,1],[1,0],[1,-1],[0,-1],[-1,-1],[-1,0],[-1,1]];
 
 export const Atlas = {
   "type": "Topology",
-  "transform": { "scale": [scale, scale], "translate": [0,-10]  }, //[0, -10]
+  "transform": { "scale": [scale, scale], "translate": [0,0]  }, //[0, -10]
   "objects": { 
     "Markers": {
       "type": "GeometryCollection",
@@ -17,7 +17,7 @@ export const Atlas = {
         { "type": "Polygon", "arcs": [[0]], "properties": { "name": "(starter seed)" }}, //
 				//{ "type": "Polygon", "arcs": [[1]], "properties": { "name": "ice cap" }}, //
         { "type": "Polygon", "arcs": [[5],[6],[7],[8]], "properties": { "name": "Equator" }}, /**/
-				{ "type": "Polygon", "arcs": [[9]], "properties": { "name": "North Pole" }}, /**/
+				//{ "type": "Polygon", "arcs": [[9]], "properties": { "name": "North Pole" }}, /**/
 				{ "type": "Polygon", "arcs": [[10]], "properties": { "name": "South Pole" }}, /**/
 				//{ "type": "Polygon", "arcs": [[3]], "properties": { "name": "prime meridian" }}, /**/
 				//{ "type": "Polygon", "arcs": [[4]], "properties": { "name": "international date line" }}, /**/
@@ -32,7 +32,7 @@ export const Atlas = {
 						"name": "Mukades",
 						"info": { 
 							"fullname": "Mukades, City of Festivals",
-							"location": "3.0° S, 170.0° E", 
+							"location": "7.0° N, 170.0° E", 
 							"population": "39,000",
 							"climate": "hot, humid",
 							"image": "Mukades.png"
@@ -44,7 +44,7 @@ export const Atlas = {
 						"name": "Lidem Bel", 
 						"info": { 
 							"fullname": "Lidem Bel, Home of the Empress",
-							"location": "16.5° S, 19.1° W",
+							"location": "6.5° S, 19.1° W",
 							"population": "102,000",
 							"climate": "warm",
 							"image": "LidemBel.png"
@@ -56,7 +56,7 @@ export const Atlas = {
 						"name": "Bardbengry",
 						"info": { 
 							"fullname": "Bardbengry, Wine Country",
-							"location": "25° S, 38.3° W",
+							"location": "15° S, 38.3° W",
 							"population": "1,400",
 							"climate": "moderate",
 							"image": "Bardbengry.png"
@@ -68,7 +68,7 @@ export const Atlas = {
 						"name": "Wallard",
 						"info": { 
 							"fullname": "Wallard, The Traveller's Stop",
-							"location": "26° S, 35.8° W",
+							"location": "16° S, 35.8° W",
 							"population": "18,000",
 							"climate": "moderate",
 							"image": "Wallard.png"
@@ -80,7 +80,7 @@ export const Atlas = {
 						"name": "Bleeding Oars",
 						"info": { 
 							"fullname": "Bleeding Oars, Home of Skullmot",
-							"location": "27.5° S, 26.7° W",
+							"location": "17.5° S, 26.7° W",
 							"population": "2,000",
 							"climate": "moderate, wet",
 							"image": "skullmot.png"
@@ -92,7 +92,7 @@ export const Atlas = {
 						"name": "Kolrei Desert",
 						"info": { 
 							"fullname": "Kolrei Desert",
-							"location": "3° N, 2.5° W",
+							"location": "13° N, 2.5° W",
 							"population": "0",
 							"climate": "Hot, dry",
 							"image": "Kolrei.png"
@@ -104,7 +104,7 @@ export const Atlas = {
 						"name": "North City",
 						"info": { 
 							"fullname": "North City, Where the Ice meets the Sky",
-							"location": "65° N, 25.0° E",
+							"location": "75° N, 25.0° E",
 							"population": "500",
 							"climate": "cold, dry",
 							"image": "dallemini_tundra.png"
@@ -116,7 +116,7 @@ export const Atlas = {
 						"name": "Frostrift",
 						"info": { 
 							"fullname": "Frostrift, where floaty rocks make ur stomac turn worse than mcdonalds",
-							"location": "15° N, 61.6° W",
+							"location": "25° N, 61.6° W",
 							"population": "170",
 							"climate": "cold, dry",
 							"image": "Frostrift.png"
@@ -128,7 +128,7 @@ export const Atlas = {
 						"name": "forest",
 						"info": { 
 							"fullname": "Researchers exploring with Milren",
-							"location": "10.0° S, 40.0° W",
+							"location": "20.0° S, 40.0° W",
 							"population": "",
 							"climate": "",
 							"image": "forest.png"
@@ -207,10 +207,10 @@ export const Atlas = {
     [[2160, 10*mult], [0,1000],[2,0],[0,-1000],[-2,0]], //4  
 		
 		/*  Equator */
-		[[0, 10*mult], [0,0.2],[1050,0],[0,-0.2],[-1050,0]], //5
-		[[1080, 10*mult], [0,0.2],[1050,0],[0,-0.2],[-1050,0]], //6
-		[[2160, 10*mult], [0,0.2],[1050,0],[0,-0.2],[-1050,0]], //7
-		[[3240, 10*mult], [0,0.2],[1050,0],[0,-0.2],[-1050,0]], //8
+		[[0, 0*mult], [0,0.2],[1050,0],[0,-0.2],[-1050,0]], //5
+		[[1080, 0*mult], [0,0.2],[1050,0],[0,-0.2],[-1050,0]], //6
+		[[2160, 0*mult], [0,0.2],[1050,0],[0,-0.2],[-1050,0]], //7
+		[[3240, 0*mult], [0,0.2],[1050,0],[0,-0.2],[-1050,0]], //8
 		
 		[[0, 98*mult], [0,2],[100,0],[0,-2],[-100,0]], //9
 		[[0, -79*mult], [0,2],[100,0],[0,-2],[-100,0]], // 10
